@@ -4,7 +4,7 @@
 node_modules
 bower_components
 .idea
-containers/eanglish/root
+containers/english/root
 npm-debug.log
 nodemon.json
 www/js/*
