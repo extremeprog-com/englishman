@@ -5,8 +5,13 @@
 
     <link rel="stylesheet" href="css/style.min.css">
     <script src="/js/lib/angular.min.js" charset="utf-8"></script>
-    <!--<script src="/js/lib/angular-route.min.js"></script>-->
+    <script src="/js/lib/angular-route.min.js"></script>
     <!--<script src="/js/lib/moment.js"></script>-->
+
+    <!-- your app's js -->
+    <script>classes = {}</script>
+    <script>libs = {}</script>
+    <script>log = []</script>
 
     <script src="/speaker_lib/lib/Core/Core.js"></script>
     <script src="/speaker_lib/Timer.js"></script>
@@ -22,15 +27,19 @@
 
 <body ng-app="myApp">
 
-<script>Core.processNamespace(classes);
-Core.processNamespace(libs);
-Core.processGlobal();</script>
+<script>
+  Core.processNamespace(classes);
+  Core.processNamespace(libs);
+  Core.processGlobal();
+</script>
 
 <div ng-controller="mainController" class="wrapper">
-    <div>Повторять каждые <input type="text" ng-model="timeout"> мин.</div>
-    <voice text="А как эта мысль будет по английски?"></voice>
-    <button class="start" ng-click="start(timeout)">Старт</button>
-    <button class="stop" ng-click="stop()">Стоп</button>
+    <div class="center">
+        <div>Повторять каждые <input type="number" ng-model="delay"> мин.</div>
+        <voice text="text"></voice>
+        <button class="start" ng-click="start(delay)">Старт</button>
+        <button class="stop" ng-click="stop()">Стоп</button>
+    </div>
 </div>
 <script src="http://localhost:35729/livereload.js"></script>
 </body>
