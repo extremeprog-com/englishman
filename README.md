@@ -1,29 +1,21 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* to build app:
+```
+npm run-script build
+```
+* to start app:
+```
+PORT=5000 npm start
+```
+* to run app (build and star after it with one command):
+```
+PORT=5000 npm run-script run
+```
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* deploy docker container:
+```
+bash -x ./deploy_english_remotely user@your-server.com
+```
