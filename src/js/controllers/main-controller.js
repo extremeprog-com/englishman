@@ -2,48 +2,38 @@ app.controller("mainController", ["$scope", "$timeout", function ($scope, $timeo
   "use strict";
 
   window.scope = $scope;
-
-  $scope.util = Core.Class({
-    /**
-     * Returns plural suffix of unit
-     *      plural(days, "%d день", "%d дня", "%d дней")
-     *
-     * @param {Number} num
-     * @param {String} one
-     * @param {String} two
-     * @param {String} many
-     * @returns {String}
-     */
-    plural: function (num, one, two, many) {
-      return (function (num) {
-        return (num == 1 && one)
-          || (num && num < 5 && parseInt(num) == num && two) || many
-      })
-      (parseFloat(num) % 10 + (parseInt(num / 10) % 10 == 1 ? 1 : 0) * 10).replace(/%d/g, num);
-    }
-  });
+  var _to1, _to2;
 
   $scope.delay = parseInt(window.localStorage.enDelay) || 15;
   $scope.text = null;
 
   $scope.$watch("delay", () => {
-    window.localStorage.enDelay = $scope.delay;
-    $scope.restart($scope.delay);
+    if ($scope.delay) {
+      window.localStorage.enDelay = $scope.delay;
+      $scope.restart($scope.delay);
+    }
   }, true);
 
   $scope.start = function (delay) {
-    $scope.stop();
+    $timeout.cancel(_to1);
+    $timeout.cancel(_to2);
     console.log("start", $scope.text);
 
-    $scope._to = $timeout(() => {
+    _to2 = $timeout(() => {
+      $scope.text = null;
+      $scope.$$phase || $scope.$apply();
+    }, (delay/2 * 1000), true);
+    _to1 = $timeout(() => {
       $scope.text = "А как эта мысль будет по английски?";
+      $scope.$$phase || $scope.$apply();
       console.log("say", $scope.text);
-      $scope.start(delay * 1000);
+      $scope.start(delay);
     }, delay * 1000, true);
   };
 
   $scope.stop = function () {
-    $timeout.cancel($scope._to);
+    $timeout.cancel(_to1);
+    $timeout.cancel(_to2);
     $scope.text = null;
     console.log("stop", $scope.text);
   };
