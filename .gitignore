@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+
+node_modules
+bower_components
+.idea
+containers/eanglish/root
+npm-debug.log
+nodemon.json
+www/js/*
+www/css/style.min.css

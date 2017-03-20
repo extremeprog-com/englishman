@@ -1,0 +1,25 @@
+{
+  "name": "english",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Liudmila Vasnetsova"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3",
+    "moment": "^2.18.0"
+  },
+  "resolutions": {
+    "angular": "~1.6.x"
+  }
+}
